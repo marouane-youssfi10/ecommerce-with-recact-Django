@@ -10,15 +10,18 @@ import CartScreen from './screens/CartScreen';
 
 
 function App() {
+    const t = localStorage.getItem('cartItems')
     return (
         <Router>
             <Header />
             <main className='py-3'>
+                <h1>Test : {t} </h1>
                     <Container>
                         <Routes>
                             <Route path='/' exact element={<HomeScreen />}/>
                             <Route path='/product/:id' element={<ProductsScreen />}/>
-                            <Route path='/cart/:id?' element={<CartScreen />}/>
+                            <Route path="/cart" element={<CartScreen />} />
+                            <Route path="/cart/:id" element={<CartScreen />} />
                         </Routes>
                     </Container>
             </main>

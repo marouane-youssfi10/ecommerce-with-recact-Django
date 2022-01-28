@@ -10,13 +10,16 @@ const reducer = combineReducers({
     productDetails: productDetailsReducer,
     cart: cartReducer,
 })
-
 // check if the cartitems is full
-const cartItemFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+const cartItemsFromStorage = localStorage.getItem('cartItems') ?
+    JSON.parse(localStorage.getItem('cartItems')) : []
 
-const initialState = {}
+const initialState = {
+    cart: {cartItems: cartItemsFromStorage}
+}
+
 const middleware = [thunk]
 const store = createStore(reducer, initialState,
-     composeWithDevTools(applyMiddleware(...middleware)))
+    composeWithDevTools(applyMiddleware(...middleware)))
 
 export default store;
