@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 import HomeScreen from './screens/HomeScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import CartScreen from './screens/CartScreen';
 
 
 function App() {
@@ -15,7 +17,8 @@ function App() {
                     <Container>
                         <Routes>
                             <Route path='/' exact element={<HomeScreen />}/>
-                            <Route path='/product/:id' exact element={<ProductsScreen />}/>
+                            <Route path='/product/:id' element={<ProductsScreen />}/>
+                            <Route path='/cart/:id?' element={<CartScreen />}/>
                         </Routes>
                     </Container>
             </main>
