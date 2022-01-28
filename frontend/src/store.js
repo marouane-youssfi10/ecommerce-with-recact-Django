@@ -8,11 +8,26 @@ import { cartReducer } from './reducers/cartReducers';
 const reducer = combineReducers({
     productList: productListReducer, 
     productDetails: productDetailsReducer,
-    cart: cartReducer,
+    cart: cartReducer
 })
-// check if the cartitems is full
-const cartItemsFromStorage = localStorage.getItem('cartItems') ?
-    JSON.parse(localStorage.getItem('cartItems')) : []
+
+let stock = localStorage.getItem('cartItems');
+
+if (stock === 'undefined'){
+    // console.log('if ->' , stock);
+    stock = [];
+
+}else if(stock === null){
+    // console.log('else if ->' , stock);
+    stock = [];
+
+}else{
+    // console.log('else ->' , stock);
+    stock = JSON.parse(localStorage.getItem('cartItems'));
+
+}
+// console.log('final ->', stock);
+const cartItemsFromStorage = stock;
 
 const initialState = {
     cart: {cartItems: cartItemsFromStorage}
