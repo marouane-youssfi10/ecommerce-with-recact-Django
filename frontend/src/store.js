@@ -3,34 +3,44 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers';
+import { userLoginReducer } from './reducers/userReducers';
 
 
 const reducer = combineReducers({
     productList: productListReducer, 
     productDetails: productDetailsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    userLogin: userLoginReducer
 })
 
 let stock = localStorage.getItem('cartItems');
+let stock1 = localStorage.getItem('userInfo');
 
+// for cartItems
 if (stock === 'undefined'){
-    // console.log('if ->' , stock);
     stock = [];
-
 }else if(stock === null){
-    // console.log('else if ->' , stock);
     stock = [];
-
 }else{
-    // console.log('else ->' , stock);
     stock = JSON.parse(localStorage.getItem('cartItems'));
-
 }
-// console.log('final ->', stock);
+
+// for userInfo
+if (stock1 === 'undefined'){
+    stock1 = null;
+}else if(stock1 === null){
+    stock1 = null;
+}else{
+    stock1 = JSON.parse(localStorage.getItem('userInfo'));
+}
+
+
 const cartItemsFromStorage = stock;
+const userInfoFromStorage = stock1;
 
 const initialState = {
-    cart: {cartItems: cartItemsFromStorage}
+    cart: {cartItems: cartItemsFromStorage},
+    userLogin: {userInfo: userInfoFromStorage}
 }
 
 const middleware = [thunk]
