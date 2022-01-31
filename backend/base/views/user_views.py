@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import *
+from base.models import Product, Review, Order, OrderItem, ShippingAddress
 from base.serializers import ProductSerializer, UserSerializerWithToken, UserSerializer
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer

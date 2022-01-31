@@ -30,16 +30,21 @@ function LoginScreen() {
         }
     }, [userInfo, redirect, navigate])
 
-    
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log('Submitted');
+        dispatch(login(email, password))
     }
 
     return(
         <div>
             <h1>Sign In</h1>
+            {
+                error && <Message variant='danger'>{error}</Message>
+            }
+            {
+                loading && <Loader />
+            }
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId="email">
                     <Form.Label>Email Address</Form.Label>
