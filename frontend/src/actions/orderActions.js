@@ -27,7 +27,7 @@ import {
     // ORDER_DELIVER_FAIL,
     // ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
-// import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
+import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
 
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -58,13 +58,12 @@ export const createOrder = (order) => async (dispatch, getState) => {
             payload: data
         })
 
-        // dispatch({
-        //     type: CART_CLEAR_ITEMS,
-        //     payload: data
-        // })
+        dispatch({
+            type: CART_CLEAR_ITEMS,
+            payload: data
+        })
 
-        // localStorage.removeItem('cartItems')
-
+        localStorage.removeItem('cartItems')
 
     } catch (error) {
         dispatch({
